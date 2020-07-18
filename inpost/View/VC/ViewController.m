@@ -8,6 +8,7 @@
 #import "ViewController.h"
 #import "ParcelModel.h"
 #import "CustomTableViewCell.h"
+#import "StringExtension.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -33,7 +34,7 @@
     static NSString *CellIdentifier = @"CustomCell";
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     cell.trackingNumberLabel.text = [[self.array objectAtIndex:indexPath.row] trackingNumber];
-    cell.statusLabel.text = [[self.array objectAtIndex:indexPath.row] status];
+    cell.statusLabel.text = [[[self.array objectAtIndex:indexPath.row] status] statusRefactor];
 
     
     return cell;
