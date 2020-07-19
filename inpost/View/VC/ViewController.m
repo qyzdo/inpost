@@ -24,6 +24,25 @@
 
     [self downloadData];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
+        {
+            NSLog(@"FIRST LAUNCH");
+            [self.tableView setHidden:YES];
+
+            LOTAnimationView *animation = [LOTAnimationView animationNamed:@"box"];
+            animation.center = self.view.center;
+            animation.loopAnimation = true;
+            [self.view addSubview:animation];
+            [animation playWithCompletion:^(BOOL animationFinished) {
+
+            }];
+            
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+}
 - (IBAction)clickedButton:(id)sender {
     NSString * myString = @"String";
     NSLog(@"%@", myString);
