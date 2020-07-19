@@ -21,27 +21,17 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.array = [[NSMutableArray alloc] init];
-
+    
     [self downloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
-        {
-            NSLog(@"FIRST LAUNCH");
-            [self.tableView setHidden:YES];
-
-            LOTAnimationView *animation = [LOTAnimationView animationNamed:@"box"];
-            animation.center = self.view.center;
-            animation.loopAnimation = true;
-            [self.view addSubview:animation];
-            [animation playWithCompletion:^(BOOL animationFinished) {
-
-            }];
-            
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }
+    {
+        [self setupSplashScreen];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 - (IBAction)clickedButton:(id)sender {
     NSString * myString = @"String";
@@ -49,18 +39,25 @@
 }
 
 
-- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"CustomCell";
-    CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    cell.trackingNumberLabel.text = [[self.array objectAtIndex:indexPath.row] trackingNumber];
-    cell.statusLabel.text = [[[self.array objectAtIndex:indexPath.row] status] statusRefactor];
-
+- (void)setupSplashScreen {
+    NSLog(@"FIRST LAUNCH");
+    [self.tableView setHidden:YES];
     
-    return cell;
-}
-
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.array.count;
+    LOTAnimationView *animation = [LOTAnimationView animationNamed:@"box"];
+    animation.center = self.view.center;
+    animation.loopAnimation = true;
+    [self.view addSubview:animation];
+    [animation playWithCompletion:^(BOOL animationFinished) {
+        
+    }];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(40, 50, 300, 50)];
+    label.backgroundColor = [UIColor clearColor];
+    [label setFont:[UIFont systemFontOfSize:50]];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.numberOfLines = 0;
+    label.text = @"Witaj!";
+    [self.view addSubview:label];
 }
 
 - (void) downloadData {
@@ -73,22 +70,40 @@
             ParcelModel *modelObject = [ParcelModel new];
             modelObject.trackingNumber = [parsedJSONArray valueForKey:@"tracking_number"];
             modelObject.status = [parsedJSONArray valueForKey:@"status"];
-
+            
             
             NSLog(@"%@", modelObject.trackingNumber);
             [self.array addObject:modelObject];
             int size = [self.array count];
-
+            
             NSLog(@"there are %d objects in the array", size);
             NSLog(@"%@", [self.array[0] trackingNumber]);
-
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
             });
-
+            
         }
     }];
     [dataTask resume];
 }
+
+
+
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"CustomCell";
+    CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell.trackingNumberLabel.text = [[self.array objectAtIndex:indexPath.row] trackingNumber];
+    cell.statusLabel.text = [[[self.array objectAtIndex:indexPath.row] status] statusRefactor];
+    
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.array.count;
+}
+
 
 @end
