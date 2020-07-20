@@ -40,12 +40,6 @@
     }
 }
 
-- (IBAction) clickedButton:(id)sender {
-    NSString * myString = @"String";
-    NSLog(@"%@", myString);
-}
-
-
 - (void)setupOnboardingScreen {
     NSLog(@"FIRST LAUNCH");
     [self.tableView setHidden:YES];
