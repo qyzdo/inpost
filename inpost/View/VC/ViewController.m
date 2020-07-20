@@ -10,6 +10,7 @@
 #import "CustomTableViewCell.h"
 #import "StringExtension.h"
 #import "UIViewExtension.h"
+#import "ApiCaller.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -22,8 +23,14 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.array = [[NSMutableArray alloc] init];
-
-    [self downloadData:(@"https://api-shipx-pl.easypack24.net/v1/tracking/687100708024170011003255")];
+    
+    ApiCaller *apiCaller = [ApiCaller alloc];
+    [apiCaller downloadData:@"https://api-shipx-pl.easypack24.net/v1/tracking/687100708024170011003255" :self.array completion:^(NSMutableArray *parcelList) {
+        self.array = parcelList;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -104,36 +111,6 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void)downloadData:(NSString *)urlString {
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (!error) {
-            NSArray *parsedJSONArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-            ParcelModel *modelObject = [ParcelModel new];
-            modelObject.trackingNumber = [parsedJSONArray valueForKey:@"tracking_number"];
-            modelObject.status = [parsedJSONArray valueForKey:@"status"];
-            
-            
-            NSLog(@"%@", modelObject.trackingNumber);
-            [self.array addObject:modelObject];
-            unsigned long size = [self.array count];
-            
-            NSLog(@"there are %lu objects in the array", size);
-            NSLog(@"%@", [self.array[0] trackingNumber]);
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-            });
-            
-        }
-    }];
-    [dataTask resume];
-}
-
-
-
-
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"CustomCell";
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -147,6 +124,5 @@
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.array.count;
 }
-
 
 @end
