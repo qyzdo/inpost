@@ -19,12 +19,10 @@
             modelObject.trackingNumber = [parsedJSONArray valueForKey:@"tracking_number"];
             modelObject.status = [parsedJSONArray valueForKey:@"status"];
             
-            NSLog(@"%@", modelObject.trackingNumber);
             [array addObject:modelObject];
             unsigned long size = [array count];
-            
-            NSLog(@"there are %lu objects in the array", size);
-            NSLog(@"%@", [array[0] trackingNumber]);
+            NSLog(@"Added parcel with tracking number:  %@", modelObject.trackingNumber);
+            NSLog(@"There are %lu objects in the array", size);
             
             completionBlock(array);
         }
