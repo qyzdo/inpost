@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		161863D224C3B4CC00910B04 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 161863D124C3B4CC00910B04 /* CustomTableViewCell.m */; };
 		161863D924C3BD0200910B04 /* StringExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 161863D824C3BD0200910B04 /* StringExtension.m */; };
+		167A52F024C5EC57000D74F2 /* UIViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 167A52EF24C5EC57000D74F2 /* UIViewExtension.m */; };
 		1693005824C3D99C00583DD1 /* box.json in Resources */ = {isa = PBXBuildFile; fileRef = 1693005724C3D99C00583DD1 /* box.json */; };
 		169A175224B9C80B00710DF6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 169A175124B9C80B00710DF6 /* AppDelegate.m */; };
 		169A175524B9C80B00710DF6 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 169A175424B9C80B00710DF6 /* SceneDelegate.m */; };
@@ -49,6 +50,8 @@
 		161863D124C3B4CC00910B04 /* CustomTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		161863D724C3BAF300910B04 /* StringExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringExtension.h; sourceTree = "<group>"; };
 		161863D824C3BD0200910B04 /* StringExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StringExtension.m; sourceTree = "<group>"; };
+		167A52EE24C5EBC7000D74F2 /* UIViewExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIViewExtension.h; sourceTree = "<group>"; };
+		167A52EF24C5EC57000D74F2 /* UIViewExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIViewExtension.m; sourceTree = "<group>"; };
 		1693005724C3D99C00583DD1 /* box.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = box.json; path = ../../../Downloads/box.json; sourceTree = "<group>"; };
 		169A174D24B9C80B00710DF6 /* inpost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = inpost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		169A175024B9C80B00710DF6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -150,6 +153,8 @@
 			children = (
 				161863D724C3BAF300910B04 /* StringExtension.h */,
 				161863D824C3BD0200910B04 /* StringExtension.m */,
+				167A52EE24C5EBC7000D74F2 /* UIViewExtension.h */,
+				167A52EF24C5EC57000D74F2 /* UIViewExtension.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -475,6 +480,7 @@
 			files = (
 				169A178B24B9F77C00710DF6 /* ParcelModel.m in Sources */,
 				169A175824B9C80B00710DF6 /* ViewController.m in Sources */,
+				167A52F024C5EC57000D74F2 /* UIViewExtension.m in Sources */,
 				161863D224C3B4CC00910B04 /* CustomTableViewCell.m in Sources */,
 				169A175224B9C80B00710DF6 /* AppDelegate.m in Sources */,
 				161863D924C3BD0200910B04 /* StringExtension.m in Sources */,
