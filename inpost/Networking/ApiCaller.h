@@ -10,7 +10,7 @@
 
 @interface ApiCaller : NSObject
 
-- (void)downloadData: (NSString *)urlString :(NSMutableArray *)array completion:(void (^)(NSMutableArray *parcelList))completionBlock;
+- (void)downloadData: (NSString *)parcelNumber :(NSMutableArray *)array completion:(void (^)(NSMutableArray *parcelList))completionBlock;
 
 
 @end

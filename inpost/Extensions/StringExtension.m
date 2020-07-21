@@ -36,7 +36,6 @@
        else if ([string isEqualToString:@"collected_from_sender"])
            string = @"Przejęta od nadawcy";
     
-    
        else
            string = self;
     

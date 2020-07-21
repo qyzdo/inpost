@@ -25,7 +25,7 @@
     self.array = [[NSMutableArray alloc] init];
     
     ApiCaller *apiCaller = [ApiCaller alloc];
-    [apiCaller downloadData:@"https://api-shipx-pl.easypack24.net/v1/tracking/687100708024170011003255" :self.array completion:^(NSMutableArray *parcelList) {
+    [apiCaller downloadData:@"687100708024170011003255" :self.array completion:^(NSMutableArray *parcelList) {
         self.array = parcelList;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
