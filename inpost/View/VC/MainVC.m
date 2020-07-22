@@ -19,6 +19,7 @@
 
 @implementation MainVC
 
+#pragma mark - viewDidLoad
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.delegate = self;
@@ -41,6 +42,7 @@
     }];
 }
 
+#pragma mark - viewWillAppear
 - (void)viewWillAppear:(BOOL)animated {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
     {
@@ -49,6 +51,7 @@
     
 }
 
+#pragma mark - prepareForSegue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      if ([[segue identifier] isEqualToString:@"segue"]) {
          DetailsVC *details = (DetailsVC *)segue.destinationViewController;
@@ -56,6 +59,7 @@
       }
 }
 
+#pragma mark - setupOnboardingScreen
 - (void)setupOnboardingScreen {
     [self.tableView setHidden:YES];
     
@@ -110,6 +114,7 @@
     [self.button.heightAnchor constraintEqualToConstant:50].active = YES;
 }
 
+#pragma mark - finishOnboardingScreenClicked
 - (void)finishOnboardingScreenClicked:(UIButton *)sender {
     [self.tableView setHiddenAnimated:NO delay:0 duration:2];
     [self.animationView setHiddenAnimated:YES delay:0 duration:0.5];
@@ -120,11 +125,12 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-
+#pragma mark - didSelectRowAtIndexPath
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"segue" sender:self];
 }
 
+#pragma mark - cellForRowAtIndexPath
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"CustomCell";
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -135,6 +141,7 @@
     return cell;
 }
 
+#pragma mark - numberOfRowsInSection
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.parcelsArray.count;
 }

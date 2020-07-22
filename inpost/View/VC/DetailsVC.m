@@ -14,6 +14,7 @@
 
 @implementation DetailsVC
 
+#pragma mark - viewDidLoad
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.delegate = self;
@@ -21,6 +22,7 @@
     self.trackingDetailsArray = [[NSMutableArray<ParcelTrackingDetail *> alloc] init];
 }
 
+#pragma mark - viewWillAppear
 - (void)viewWillAppear:(BOOL)animated {
     self.trackingDetailsArray = self.parcel.trackingDetails;
     self.trackingNumberLabel.text = self.parcel.trackingNumber;
@@ -38,10 +40,13 @@
 
 }
 
+
+#pragma mark - numberOfRowsInSection
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.trackingDetailsArray.count;
 }
 
+#pragma mark - cellForRowAtIndexPath
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"DetailsCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
