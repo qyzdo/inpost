@@ -36,6 +36,15 @@
        else if ([string isEqualToString:@"collected_from_sender"])
            string = @"Przejęta od nadawcy";
     
+       else if ([string isEqualToString:@"adopted_at_sorting_center"])
+           string = @"Przejęta w sortowni";
+    
+       else if ([string isEqualToString:@"dispatched_by_sender"])
+           string = @"Wysłana przez nadawcę";
+    
+       else if ([string isEqualToString:@"taken_by_courier"])
+           string = @"Przejęta przez kuriera";
+    
        else
            string = self;
     
