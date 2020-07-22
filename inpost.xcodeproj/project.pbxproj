@@ -22,6 +22,7 @@
 		169A176D24B9C80C00710DF6 /* inpostTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 169A176C24B9C80C00710DF6 /* inpostTests.m */; };
 		169A177824B9C80C00710DF6 /* inpostUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 169A177724B9C80C00710DF6 /* inpostUITests.m */; };
 		169A178B24B9F77C00710DF6 /* ParcelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 169A178A24B9F77C00710DF6 /* ParcelModel.m */; };
+		16A8C52A24C85E5600280F0B /* DetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A8C52924C85E5600280F0B /* DetailsVC.m */; };
 		7528A9469861EDE9CB97691F /* Pods_inpostTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EA8AF6610A63E54C31D72A /* Pods_inpostTests.framework */; };
 		953B9D7F648AF6DCAD5D87DE /* Pods_inpost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07AECA0EBC126759A5726B72 /* Pods_inpost.framework */; };
 		A295C322B3D075B6E5A8580D /* Pods_inpost_inpostUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5184604F0FA46B7B35F93A7C /* Pods_inpost_inpostUITests.framework */; };
@@ -76,6 +77,8 @@
 		169A177924B9C80C00710DF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		169A178A24B9F77C00710DF6 /* ParcelModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParcelModel.m; sourceTree = "<group>"; };
 		169A178C24B9F78400710DF6 /* ParcelModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParcelModel.h; sourceTree = "<group>"; };
+		16A8C52824C85E5600280F0B /* DetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsVC.h; sourceTree = "<group>"; };
+		16A8C52924C85E5600280F0B /* DetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsVC.m; sourceTree = "<group>"; };
 		3710FE1BDD2AADDDEA919447 /* Pods-inpost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inpost.debug.xcconfig"; path = "Target Support Files/Pods-inpost/Pods-inpost.debug.xcconfig"; sourceTree = "<group>"; };
 		5184604F0FA46B7B35F93A7C /* Pods_inpost_inpostUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_inpost_inpostUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7404F3CAA248A89D314D7938 /* Pods-inpost-inpostUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inpost-inpostUITests.debug.xcconfig"; path = "Target Support Files/Pods-inpost-inpostUITests/Pods-inpost-inpostUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +141,8 @@
 				169A175724B9C80B00710DF6 /* ViewController.m */,
 				161863D024C3B4CC00910B04 /* CustomTableViewCell.h */,
 				161863D124C3B4CC00910B04 /* CustomTableViewCell.m */,
+				16A8C52824C85E5600280F0B /* DetailsVC.h */,
+				16A8C52924C85E5600280F0B /* DetailsVC.m */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -494,6 +499,7 @@
 				165FD97024C659950006D9EF /* ApiCaller.m in Sources */,
 				169A178B24B9F77C00710DF6 /* ParcelModel.m in Sources */,
 				169A175824B9C80B00710DF6 /* ViewController.m in Sources */,
+				16A8C52A24C85E5600280F0B /* DetailsVC.m in Sources */,
 				167A52F024C5EC57000D74F2 /* UIViewExtension.m in Sources */,
 				161863D224C3B4CC00910B04 /* CustomTableViewCell.m in Sources */,
 				169A175224B9C80B00710DF6 /* AppDelegate.m in Sources */,
