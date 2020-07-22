@@ -11,7 +11,6 @@
 #import "StringExtension.h"
 #import "UIViewExtension.h"
 #import "ApiCaller.h"
-#import "DetailsVC.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -32,13 +31,6 @@
             [self.tableView reloadData];
         });
     }];
-    
-    [apiCaller downloadData:@"686065008024170117168137" :self.array completion:^(NSMutableArray *parcelList) {
-        self.array = parcelList;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
-        });
-    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -46,15 +38,6 @@
     {
         [self setupOnboardingScreen];
     }
-    
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-     if ([[segue identifier] isEqualToString:@"segue"]) {
-         DetailsVC *details = (DetailsVC *)segue.destinationViewController;
-         details.parcel = [self.array objectAtIndex:self.tableView.indexPathForSelectedRow.row];
-         NSLog(@"SEGUE");
-      }
 }
 
 - (void)setupOnboardingScreen {
@@ -118,7 +101,7 @@
     [self.label setHiddenAnimated:YES delay:0 duration:0.5];
     [self.button setHiddenAnimated:YES delay:0 duration:0.5];
 
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"HasLaunchedOnce"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -134,10 +117,6 @@
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.array.count;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"segue" sender:self];
 }
 
 @end
