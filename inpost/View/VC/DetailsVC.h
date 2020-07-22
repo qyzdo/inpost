@@ -5,12 +5,12 @@
 //  Created by Oskar Figiel on 22/07/2020.
 //
 
-#import "ViewController.h"
+#import <UIKit/UIKit.h>
 #import "ParcelModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DetailsVC : ViewController
+@interface DetailsVC : UIViewController
 @property (weak, nonatomic) IBOutlet Parcel *parcel;
 @property (weak, nonatomic) IBOutlet UILabel *trackingNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
@@ -23,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *targetAddresLine2Label;
 @property (weak, nonatomic) IBOutlet UILabel *targetDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dropOffDescriptionLabel;
+@property (strong, nonatomic, nullable) NSArray<ParcelTrackingDetail *> *trackingDetailsArray;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 @end
 

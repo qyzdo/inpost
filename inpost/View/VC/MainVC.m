@@ -5,7 +5,7 @@
 //  Created by Oskar Figiel on 11/07/2020.
 //
 
-#import "ViewController.h"
+#import "MainVC.h"
 #import "ParcelModel.h"
 #import "CustomTableViewCell.h"
 #import "StringExtension.h"
@@ -13,28 +13,28 @@
 #import "ApiCaller.h"
 #import "DetailsVC.h"
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface MainVC () <UITableViewDelegate, UITableViewDataSource>
 
 @end
 
-@implementation ViewController
+@implementation MainVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.array = [[NSMutableArray alloc] init];
+    self.parcelsArray = [[NSMutableArray alloc] init];
     
     ApiCaller *apiCaller = [ApiCaller alloc];
-    [apiCaller downloadData:@"687100708024170011003255" :self.array completion:^(NSMutableArray *parcelList) {
-        self.array = parcelList;
+    [apiCaller downloadData:@"687100708024170011003255" :self.parcelsArray completion:^(NSMutableArray *parcelList) {
+        self.parcelsArray = parcelList;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
         });
     }];
     
-    [apiCaller downloadData:@"686065008024170117168137" :self.array completion:^(NSMutableArray *parcelList) {
-        self.array = parcelList;
+    [apiCaller downloadData:@"686065008024170117168137" :self.parcelsArray completion:^(NSMutableArray *parcelList) {
+        self.parcelsArray = parcelList;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
         });
@@ -52,13 +52,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      if ([[segue identifier] isEqualToString:@"segue"]) {
          DetailsVC *details = (DetailsVC *)segue.destinationViewController;
-         details.parcel = [self.array objectAtIndex:self.tableView.indexPathForSelectedRow.row];
-         NSLog(@"SEGUE");
+         details.parcel = [self.parcelsArray objectAtIndex:self.tableView.indexPathForSelectedRow.row];
       }
 }
 
 - (void)setupOnboardingScreen {
-    NSLog(@"FIRST LAUNCH");
     [self.tableView setHidden:YES];
     
     UILayoutGuide * guide = self.view.safeAreaLayoutGuide;
@@ -122,22 +120,24 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"segue" sender:self];
+}
+
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"CustomCell";
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    cell.trackingNumberLabel.text = [[self.array objectAtIndex:indexPath.row] trackingNumber];
-    cell.statusLabel.text = [[[self.array objectAtIndex:indexPath.row] status] statusRefactor];
+    cell.trackingNumberLabel.text = [[self.parcelsArray objectAtIndex:indexPath.row] trackingNumber];
+    cell.statusLabel.text = [[[self.parcelsArray objectAtIndex:indexPath.row] status] statusRefactor];
     
     
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.array.count;
+    return self.parcelsArray.count;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"segue" sender:self];
-}
 
 @end
