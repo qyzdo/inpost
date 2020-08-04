@@ -19,7 +19,7 @@
            string = @"Wysłana z oddziału";
     
        else if ([string isEqualToString:@"ready_to_pickup"])
-           string = @"Gotowa do odbiorua";
+           string = @"Gotowa do odbioru";
     
        else if ([string isEqualToString:@"404"])
            string = @"Podana przesyłka nie istnieje";
