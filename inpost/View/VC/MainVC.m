@@ -26,20 +26,18 @@
     self.tableView.dataSource = self;
     self.parcelsArray = [[NSMutableArray alloc] init];
     
-    ApiCaller *apiCaller = [ApiCaller alloc];
-    [apiCaller downloadData:@"687100708024170011003255" :self.parcelsArray completion:^(NSMutableArray *parcelList) {
-        self.parcelsArray = parcelList;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
-        });
-    }];
+    NSArray *trackingNumbers = @[@"687100708024170011003255", @"687100218024170137482623", @"600441497024170126732236", @"642202397024170117575245", @"663410197024170119003197", @"682300297024170014391380"];
     
-    [apiCaller downloadData:@"686065008024170117168137" :self.parcelsArray completion:^(NSMutableArray *parcelList) {
-        self.parcelsArray = parcelList;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
-        });
-    }];
+    ApiCaller *apiCaller = [ApiCaller alloc];
+    for (int i = 0; i < [trackingNumbers count]; i++)
+    {
+        [apiCaller downloadData:[trackingNumbers objectAtIndex:i] :self.parcelsArray completion:^(NSMutableArray *parcelList) {
+            self.parcelsArray = parcelList;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+        }];
+    }
 }
 
 #pragma mark - viewWillAppear
