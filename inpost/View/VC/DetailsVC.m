@@ -51,9 +51,16 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"DetailsCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    cell.textLabel.text = self.trackingDetailsArray[indexPath.row].status.statusRefactor;
-    cell.detailTextLabel.text = self.trackingDetailsArray[indexPath.row].datetime;
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ";
+    NSDate *date = [dateFormatter dateFromString:self.trackingDetailsArray[indexPath.row].datetime];
+    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm";
+    NSString *dateChanged = [dateFormatter stringFromDate:date];
+    
+    cell.detailTextLabel.text = dateChanged;
+    cell.textLabel.text = self.trackingDetailsArray[indexPath.row].status.statusRefactor;
+
     return cell;
 }
 
