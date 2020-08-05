@@ -24,6 +24,7 @@
 
 #pragma mark - viewWillAppear
 - (void)viewWillAppear:(BOOL)animated {
+    [self setTitle:self.parcel.trackingNumber];
     self.trackingDetailsArray = self.parcel.trackingDetails;
     self.trackingNumberLabel.text = self.parcel.trackingNumber;
     self.statusLabel.text = self.parcel.status.statusRefactor;

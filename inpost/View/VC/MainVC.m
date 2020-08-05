@@ -46,7 +46,16 @@
     {
         [self setupOnboardingScreen];
     }
-    
+    UINavigationController *navController = self.navigationController;
+    [navController.navigationBar setTranslucent:true];
+    navController.navigationBar.barTintColor = UIColor.systemYellowColor;
+    [self setTitle:@"Moje przesyłki"];
+    UIBarButtonItem *goBackButton = [[UIBarButtonItem alloc] initWithTitle:@""
+                                     style:UIBarButtonItemStylePlain
+                                    target:nil
+                                    action:nil];
+    [goBackButton setTintColor:UIColor.blackColor];
+    [[self navigationItem] setBackBarButtonItem:goBackButton];
 }
 
 #pragma mark - prepareForSegue
