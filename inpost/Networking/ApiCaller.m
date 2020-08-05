@@ -31,10 +31,6 @@
         }
         
         [array addObject:modelObject];
-        unsigned long size = [array count];
-        NSLog(@"Added parcel with tracking number:  %@", modelObject.trackingNumber);
-        NSLog(@"There are %lu objects in the array", size);
-        
         completionBlock(array);
     }];
     [dataTask resume];
