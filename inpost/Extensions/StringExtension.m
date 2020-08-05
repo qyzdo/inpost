@@ -45,6 +45,9 @@
        else if ([string isEqualToString:@"taken_by_courier"])
            string = @"Przejęta przez kuriera";
     
+       else if ([string isEqualToString:@"out_for_delivery_to_address"])
+           string = @"W doręczeniu";
+    
        else
            string = self;
     
