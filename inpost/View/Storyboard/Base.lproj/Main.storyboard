@@ -17,9 +17,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3D9-Yt-n8z">
-                                <rect key="frame" x="0.0" y="97" width="414" height="765"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomCell" rowHeight="116" id="gbI-eI-SnP" customClass="CustomTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="116"/>
@@ -80,7 +80,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="3D9-Yt-n8z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="9" id="LqE-U0-iAT"/>
+                            <constraint firstItem="3D9-Yt-n8z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LqE-U0-iAT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3D9-Yt-n8z" secondAttribute="bottom" id="OTj-fa-Uba"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3D9-Yt-n8z" secondAttribute="trailing" id="Qua-DZ-tlP"/>
                             <constraint firstItem="3D9-Yt-n8z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Yjo-yZ-7RG"/>
