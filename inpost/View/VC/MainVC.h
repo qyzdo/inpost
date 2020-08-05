@@ -17,7 +17,9 @@
 
 
 - (void) setupOnboardingScreen;
+- (void) setupNavbar;
 - (void) finishOnboardingScreenClicked:UIButton;
+
 
 @end
 

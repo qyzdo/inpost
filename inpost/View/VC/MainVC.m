@@ -42,10 +42,15 @@
 
 #pragma mark - viewWillAppear
 - (void)viewWillAppear:(BOOL)animated {
+    [self setupNavbar];
+    
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
     {
         [self setupOnboardingScreen];
     }
+}
+
+- (void)setupNavbar {
     UINavigationController *navController = self.navigationController;
     [navController.navigationBar setTranslucent:true];
     navController.navigationBar.barTintColor = UIColor.systemYellowColor;
@@ -69,6 +74,7 @@
 #pragma mark - setupOnboardingScreen
 - (void)setupOnboardingScreen {
     [self.tableView setHidden:YES];
+    [self.navigationController.navigationBar setHidden:true];
     
     UILayoutGuide * guide = self.view.safeAreaLayoutGuide;
 
@@ -123,10 +129,11 @@
 
 #pragma mark - finishOnboardingScreenClicked
 - (void)finishOnboardingScreenClicked:(UIButton *)sender {
-    [self.tableView setHiddenAnimated:NO delay:0 duration:2];
-    [self.animationView setHiddenAnimated:YES delay:0 duration:0.5];
-    [self.label setHiddenAnimated:YES delay:0 duration:0.5];
-    [self.button setHiddenAnimated:YES delay:0 duration:0.5];
+    [self.label setHiddenAnimated:YES delay:0 duration:0.1];
+    [self.animationView setHiddenAnimated:YES delay:0 duration:0.4];
+    [self.button setHiddenAnimated:YES delay:0 duration:0.4];
+    [self.navigationController.navigationBar setHiddenAnimated:NO delay:0 duration:0.3];
+    [self.tableView setHiddenAnimated:NO delay:0.4 duration:0.5];
 
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
     [[NSUserDefaults standardUserDefaults] synchronize];
