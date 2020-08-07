@@ -1,7 +1,7 @@
 # Application created to track inpost parcels.
 
 #### Mostly created to show and expand my objective-c skills. 
-Check almost the same app created in swift here: https://github.com/qyzdo/inpostSwift
+Check almost the same app created in swift with UI 100% programatically here: https://github.com/qyzdo/inpostSwift
 
 # Main features: 
 ##### • Written in objective-c
